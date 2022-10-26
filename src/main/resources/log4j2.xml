@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="msg-center">
+
+    <Properties>
+        <Property name="log-path">./logs</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console-log" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n"/>
+        </Console>
+        <File name="key-log" fileName="/Users/Lee/tmp/key.log">
+            <PatternLayout>
+                <Pattern>%msg %n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="io.netty.incubator.codec.quic.BoringSSLKeylogCallback" level="debug" additivity="false">
+            <appender-ref ref="key-log" level="debug"/>
+        </Logger>
+        <Logger name="io.netty" level="debug" additivity="false">
+            <appender-ref ref="console-log" level="info"/>
+        </Logger>
+    </Loggers>
+</Configuration>
