@@ -79,6 +79,7 @@ public final class QuicServerExample {
                     protected void initChannel(QuicStreamChannel ch)  {
                         // Add a LineBasedFrameDecoder here as we just want to do some simple HTTP 0.9 handling.
                         ch.pipeline()
+                                .addLast(new DecoderTest())
                                 .addLast(new LineBasedFrameDecoder(4096))
                                 .addLast(new ChannelInboundHandlerAdapter() {
                             @Override
